@@ -19,6 +19,11 @@ let currentEditMeme;
 // const form = document.querySelector('form')
 const quoteBtn = document.querySelector('#quote-btn')
 const memeBtn = document.querySelector('#random-meme')
+const showHideBtn = document.querySelector('#show-hide')
+
+// global tracker for toggling meme list display, initialized at true
+let toggle = true;
+
 
 let memeArray;
 
@@ -26,6 +31,7 @@ let memeArray;
 // EVENT LISTENERS
 quoteBtn.addEventListener('click', getQuote)
 memeBtn.addEventListener('click', pickRandomMeme)
+showHideBtn.addEventListener('click', toggleDisplay)
 // form.addEventListener('submit', addText)
 
 // Handlers
@@ -39,16 +45,17 @@ function pickRandomMeme() {
     const container2 = document.querySelector('#editor-1')
     container2.innerHTML = '<h3 id="meme-name"></h3><img id="edit-meme">'
     container.innerHTML = '<br>'
-    const img = document.createElement('img')
+    const img = document.querySelector('#edit-meme')
+    const h3 = document.querySelector('#meme-name')
+    h3.innerHTML = `<em>${randomMeme.name}<em>`
     img.src = randomMeme.url
-    container.append(img)
 }
 
 function handleQuoteData(quoteObj) {
     const container = document.querySelector('#quote-container')
     container.innerHTML = ''
     const p = document.createElement('p')
-    p.innerHTML = `${quoteObj.content}      &#8212 ${quoteObj.author}`
+    p.innerHTML = `${quoteObj.content}   &nbsp &#8212 ${quoteObj.author}`
     container.append(p)
 }
 
@@ -60,6 +67,7 @@ function handleMemeData(dataObj) {
 // Renderers
 function renderMeme(memeObj) {
     const container = document.querySelector('#images')
+    container.style.display = 'none';
     const img = document.createElement('img')
     img.src = memeObj.url
     img.addEventListener('click', (e) => displayMeme(e, memeObj))
@@ -87,3 +95,18 @@ function displayMeme(e, memeObj) {
 
 // Call fetch 
 getAllMemes()
+
+// Toggle button
+function toggleDisplay() {
+    if(toggle) {
+        toggle = !toggle;
+        const container = document.querySelector('#images')
+        container.style.display = 'flex';
+        showHideBtn.textContent = 'Hide Meme List'
+    } else {
+        toggle = !toggle;
+        const container = document.querySelector('#images')
+        container.style.display = 'none';
+        showHideBtn.textContent = 'Show Meme List'
+    }
+}
