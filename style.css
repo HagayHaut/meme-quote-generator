@@ -1,0 +1,83 @@
+body {
+    text-align: center;
+    background-color: beige;
+}
+
+header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(180, 73, 24);
+    font-size: 2.2vw;
+    margin-top: 0px 0px 0px 0px;
+}
+
+.oval {
+    width: 550px;
+    height: 80px;
+    background: rgb(221, 205, 134);
+    border-radius: 90px;
+}
+
+button {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+#content {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+#images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+#images img {
+    height: 12vw;
+    width: auto;
+    cursor: pointer;
+    margin: 0px 10px 0px 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px;
+}
+
+
+#editor-1 {
+    text-align: center;
+    position: relative;
+}
+
+#editor-1 img {
+    margin: auto;
+    display: block;
+    height: 30vw;
+    width: auto;
+    /* border: 1px solid black; */
+    box-shadow: 2px 2px;
+}
+
+#random-meme-container {
+    text-align: center;
+    position: relative;
+}
+
+#random-meme-container img {
+    margin: auto;
+    display: block;
+    height: 30vw;
+    width: auto;
+    /* border: 1px solid black; */
+    box-shadow: 2px 2px;
+}
+
+h2 {
+    font-size: 2.1vw;
+}
+
+h3 {
+    font-size: 1.8vw;
+}
+
+p {
+    font-size: 1.9;
+}

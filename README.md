@@ -1,0 +1,1 @@
+Use this directory to practice working with fetch() and public APIs
