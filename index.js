@@ -20,6 +20,9 @@ let currentEditMeme;
 const quoteBtn = document.querySelector('#quote-btn')
 const memeBtn = document.querySelector('#random-meme')
 const showHideBtn = document.querySelector('#show-hide')
+const form = document.querySelector('#quote-form')
+// const inputBtn = document/querySelector('#submit')
+
 
 // global tracker for toggling meme list display, initialized at true
 let toggle = true;
@@ -32,6 +35,8 @@ let memeArray;
 quoteBtn.addEventListener('click', getQuote)
 memeBtn.addEventListener('click', pickRandomMeme)
 showHideBtn.addEventListener('click', toggleDisplay)
+form.addEventListener('submit', addOwnQuote)
+//inputBtn.addEventListener('click')
 // form.addEventListener('submit', addText)
 
 // Handlers
@@ -49,6 +54,16 @@ function pickRandomMeme() {
     const h3 = document.querySelector('#meme-name')
     h3.innerHTML = `<em>${randomMeme.name}<em>`
     img.src = randomMeme.url
+}
+
+function addOwnQuote(e) {
+    e.preventDefault()
+    const container = document.querySelector('#quote-container')
+    container.innerHTML = ''
+    const p = document.createElement('p')
+    p.textContent = `${e.target.write_quote.value}`
+    container.append(p)
+    e.target.reset()
 }
 
 function handleQuoteData(quoteObj) {
@@ -74,11 +89,11 @@ function renderMeme(memeObj) {
     container.append(img)
 }
 
-function addText(e) {
-    e.preventDefault()
-    console.log(e.target.placement.value)
-    form.reset()
-}
+// function addText(e) {
+//     e.preventDefault()
+//     console.log(e.target.placement.value)
+//     form.reset()
+// }
 
 // Meme functions
 function displayMeme(e, memeObj) {
